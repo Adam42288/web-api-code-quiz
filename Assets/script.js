@@ -1,6 +1,10 @@
 
-// Adding a timer
 
+// initial variables declared.
+var quizContainer = document.getElementById('quiz');
+var resultsContainer = document.getElementById('results');
+var submitButton = document.getElementById('submit');
+var startButton = document.getElementById('start');
 
 // Function that generates a quiz with questions and answers.
 function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
@@ -86,12 +90,16 @@ function showResults(questions, quizContainer, resultsContainer){
     // When user clicks on the submit button, shows results.
     submitButton.onclick = function() {
         showResults(questions, quizContainer, resultsContainer);
-    }   
+    }                         
+}
 
-    // When user clicks on the start button, start the timer.
+    // When user clicks on the start button, start the timer and display questions.
     startButton.onclick = function() {
         // adding a timer.
+        document.getElementById('startscreen').innerHTML='';
+       
         var count = 3;
+        generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);  
         var interval = setInterval(function(){
         document.getElementById('timer').innerHTML='Time: ' + count;
         count--;
@@ -103,10 +111,8 @@ function showResults(questions, quizContainer, resultsContainer){
         showResults(questions, quizContainer, resultsContainer);
                         }
                             }, 1000);
-
-    }
-}
-
+                            }
+                            
 var myQuestions = [
     {
         question: "Commonly used data types DO Not Include: ",
@@ -160,10 +166,11 @@ var myQuestions = [
     }
 ];
 
-// initial variables declared.
-var quizContainer = document.getElementById('quiz');
-var resultsContainer = document.getElementById('results');
-var submitButton = document.getElementById('submit');
-var startButton = document.getElementById('start');
 
-generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+// generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+
+// startButton.onclick = function() {
+//     generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);  
+//         document.getElementById('startscreen').innerHTML='';
+//                             }
+                        
