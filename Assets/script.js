@@ -1,41 +1,42 @@
 
-// initial variables declared.
-var quizContainer = document.getElementById('quiz');
-var resultsContainer = document.getElementById('results');
-var submitButton = document.getElementById('submit');
 
 
 // Function that generates a quiz with questions and answers.
 function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
     
     // Function to show questions to user
-    function showQuestions(questions, quizContainer) {
-        
-        // Used to store the output and answer choices.
+    function showQuestions(questions, quizContainer){
+        // we'll need a place to store the output and the answer choices
         var output = [];
         var answers;
-
-        // for each question, show the question.
-        for(var i=0; i<questions.length; i++) {
-            // Reset the list of answers
+    
+        // for each question...
+        for(var i=0; i<questions.length; i++){
+            
+            // first reset the list of answers
             answers = [];
-
-            // For each anaswer to this question:
+    
+            // for each available answer to this question...
             for(letter in questions[i].answers){
-                // add an html radio button to allow you to select the question.
+    
+                // ...add an html radio button
                 answers.push(
-                    '<label>' + '<input type="radio" name="question' +i+'" value"' +letter+'">' + letter + ': '+ questions[i].answers[letter] + '</label>'
+                    '<label>'
+                        + '<input type="radio" name="question'+i+'" value="'+letter+'">'
+                        + letter + ': '
+                        + questions[i].answers[letter]
+                    + '</label>'
                 );
             }
-
-
-            // Add this question and its answer to the output
+    
+            // add this question and its answers to the output
             output.push(
-                'div class="question">' + questions[i].question + '</div>' + '<div class="answers">' + answers.join('') + '</div>'
+                '<div class="question">' + questions[i].question + '</div>'
+                + '<div class="answers">' + answers.join('') + '</div>'
             );
         }
-
-        // Combine the output list into one string of html and put it on the page.
+    
+        // finally combine our output list into one string of html and put it on the page
         quizContainer.innerHTML = output.join('');
     }
 
@@ -142,3 +143,10 @@ var myQuestions = [
         correctAnswer: 'd'
     }
 ];
+
+// initial variables declared.
+var quizContainer = document.getElementById('quiz');
+var resultsContainer = document.getElementById('results');
+var submitButton = document.getElementById('submit');
+
+generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
