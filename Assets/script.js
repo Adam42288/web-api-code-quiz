@@ -1,5 +1,16 @@
 
-
+// Adding a timer
+var count = 75;
+var interval = setInterval(function(){
+  document.getElementById('timer').innerHTML='Time: ' + count;
+  count--;
+  if (count === 0){
+    clearInterval(interval);
+    document.getElementById('count').innerHTML='Game Over';
+    // or...
+    alert("You're out of time!");
+  }
+}, 1000);
 
 // Function that generates a quiz with questions and answers.
 function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
