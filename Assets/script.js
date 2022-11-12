@@ -1,4 +1,10 @@
 
+// initial variables declared.
+var quizContainer = document.getElementById('quiz');
+var resultsContainer = document.getElementById('results');
+var submitButton = document.getElementById('submit');
+
+
 // Function that generates a quiz with questions and answers.
 function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
     
@@ -42,10 +48,11 @@ function showResults(questions, quizContainer, resultsContainer){
 	// keep track of user's answers
 	var userAnswer = '';
 	var numCorrect = 0;
-	
+    const answerStatus = document.querySelector('#answerStatus');
+
 	// for each question...
 	for(var i=0; i<questions.length; i++){
-        const answerStatus = document.querySelector('#answerStatus');
+     
 
 		// find selected answer
 		userAnswer = (answerContainers[i].querySelector('input[name=question'+i+']:checked')||{}).value;
@@ -57,6 +64,8 @@ function showResults(questions, quizContainer, resultsContainer){
 			
 			// color the answers green
 			answerContainers[i].style.color = 'lightgreen';
+            answerStatus.innerHTML = 'Correct!';
+
 		}
 		// if answer is wrong or blank
 		else{
