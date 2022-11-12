@@ -40,27 +40,27 @@ var myQuestions = [
             c: 'parenthesis',
             d: 'square brackets'
         },
-        correctAnswer: 'b'
+        correctAnswer: 'c'
     },
     {
-        question: "A very useful tool used during development and debugging for printing content to the debugger is: ",
+        question: "Arrays in JavaScript can be used to store: ",
         answers: {
-            a: 'JavaScript',
-            b: 'terminal/bash',
-            c: 'for loops',
-            d: 'console.log'
+            a: 'numbers and strings',
+            b: 'other arrays',
+            c: 'booleans',
+            d: 'all of the above'
         },
         correctAnswer: 'd'
     },
     {
-        question: "A very useful tool used during development and debugging for printing content to the debugger is: ",
+        question: "String values must be enclosed within ____ when being assigned to variables.",
         answers: {
-            a: 'JavaScript',
-            b: 'terminal/bash',
-            c: 'for loops',
-            d: 'console.log'
+            a: 'commas',
+            b: 'curly brackets',
+            c: 'quotes',
+            d: 'parenthesis'
         },
-        correctAnswer: 'd'
+        correctAnswer: 'c'
     },
     {
         question: "A very useful tool used during development and debugging for printing content to the debugger is: ",
