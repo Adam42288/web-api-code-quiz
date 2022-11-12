@@ -1,16 +1,6 @@
 
 // Adding a timer
-var count = 75;
-var interval = setInterval(function(){
-  document.getElementById('timer').innerHTML='Time: ' + count;
-  count--;
-  if (count === 0){
-    clearInterval(interval);
-    document.getElementById('count').innerHTML='Game Over';
-    // or...
-    alert("You're out of time!");
-  }
-}, 1000);
+
 
 // Function that generates a quiz with questions and answers.
 function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
@@ -76,14 +66,11 @@ function showResults(questions, quizContainer, resultsContainer){
 			
 			// color the answers green
 			answerContainers[i].style.color = 'lightgreen';
-            answerStatus.innerHTML = 'Correct!';
-
 		}
 		// if answer is wrong or blank
 		else{
 			// color the answers red
 			answerContainers[i].style.color = 'red';
-            answerStatus.innerHTML = 'Wrong!';
 		}
 	}
 
@@ -100,6 +87,24 @@ function showResults(questions, quizContainer, resultsContainer){
     submitButton.onclick = function() {
         showResults(questions, quizContainer, resultsContainer);
     }   
+
+    // When user clicks on the start button, start the timer.
+    startButton.onclick = function() {
+        // adding a timer.
+        var count = 3;
+        var interval = setInterval(function(){
+        document.getElementById('timer').innerHTML='Time: ' + count;
+        count--;
+        if (count === -1){
+        clearInterval(interval);
+        document.getElementById('timer').innerHTML='Game Over';
+        // or...
+        alert("You're out of time!");
+        showResults(questions, quizContainer, resultsContainer);
+                        }
+                            }, 1000);
+
+    }
 }
 
 var myQuestions = [
@@ -159,5 +164,6 @@ var myQuestions = [
 var quizContainer = document.getElementById('quiz');
 var resultsContainer = document.getElementById('results');
 var submitButton = document.getElementById('submit');
+var startButton = document.getElementById('start');
 
 generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
