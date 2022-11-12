@@ -42,7 +42,7 @@ function generateQuiz(questions, quizContainer, resultsContainer, submitButton) 
         }
     
         // finally combine our output list into one string of html and put it on the page
-        quizContainer.innerHTML = output.join('');
+        quizContainer.innerHTML = output[0];
     }
 
     // Function to show results
@@ -97,20 +97,26 @@ function showResults(questions, quizContainer, resultsContainer){
     startButton.onclick = function() {
         // adding a timer.
         document.getElementById('startscreen').innerHTML='';
-       
-        var count = 3;
+        var count = 75;
         generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);  
         var interval = setInterval(function(){
         document.getElementById('timer').innerHTML='Time: ' + count;
         count--;
         if (count === -1){
         clearInterval(interval);
-        document.getElementById('timer').innerHTML='Game Over';
+        document.getElementById('timer').innerHTML="Game over, you're out of time!";
+        document.getElementById('quiz').innerHTML ='';
         // or...
         alert("You're out of time!");
-        showResults(questions, quizContainer, resultsContainer);
+       // showResults(questions, quizContainer, resultsContainer);
                         }
                             }, 1000);
+                            submitButton.onclick = function() {
+                                document.getElementById('timer').innerHTML='';
+                                clearInterval(interval);
+                                document.getElementById('startscreen').innerHTML='All done! answers correct:' + numCorrect;
+                                document.getElementById('quiz').innerHTML ='';
+                            }       
                             }
                             
 var myQuestions = [
